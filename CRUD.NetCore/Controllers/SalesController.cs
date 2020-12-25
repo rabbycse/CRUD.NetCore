@@ -26,24 +26,24 @@ namespace CRUD.NetCore.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public ActionResult GetAllSalesData() 
-        //{
-        //    var sales = _unitOfWork.SalesMain.GetAll().ToList();
-        //    var saleDetails = _unitOfWork.SalesSub.GetAll().ToList();
+        [HttpGet]
+        public ActionResult GetAllSalesData() 
+        {
+            var sales = _unitOfWork.SalesMain.GetAll().ToList();
+            var saleDetails = _unitOfWork.SalesSub.GetAll().ToList();
 
-        //    var data = (from s in sales
-        //                join sd in saleDetails on s.SalesMainId equals sd.SalesMainId
-        //                select new
-        //                { 
-        //                    s.SalesMainId,
-        //                    sd.ItemName,
-        //                    sd.ItemRate,
-        //                    sd.ItemQuantity
-        //                }).ToList();
+            var data = (from s in sales
+                        join sd in saleDetails on s.SalesMainId equals sd.SalesMainId
+                        select new
+                        { 
+                            s.SalesMainId,
+                            sd.ItemName,
+                            sd.ItemRate,
+                            sd.ItemQuantity
+                        }).ToList();
             
-        //    return Ok(data);
-        //}
+            return Ok(data);
+        }
 
         [HttpPost]
         public ActionResult SaveSales(SalesMain sale)
