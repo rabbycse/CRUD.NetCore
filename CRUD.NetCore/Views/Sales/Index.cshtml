@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col-lg-12" ng-controller="SalesController">
+    <div class="card">
+        <div class="card-header">
+            <strong>List</strong>
+            <small>Form</small>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sales ID</th>
+                        <th>Item Name</th>
+                        <th>Item Rate</th>
+                        <th>Item Quantity</th>
+                        <th>Total Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in salesData">
+						<td>{{$index + 1}}</td>
+						<td>{{x.ItemName}}</td>
+						<td>{{x.ItemRate}}</td>
+						<td>{{x.ItemQuantity}}</td>
+						<td>{{x.ItemRate + x.ItemQuantity}}</td>
+						<td>
+							<a ng-click="EditFromDetail(item)" class="btn btn-info btn-xs white"><i class="fa fa-edit"></i></a>
+							<a ng-click="Delete(item)" class="btn btn-danger btn-xs white"><i class="fa fa-trash-o"></i></a>
+						</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="~/lib/angular/controller/SalesController.js"></script>
+
+
+
+

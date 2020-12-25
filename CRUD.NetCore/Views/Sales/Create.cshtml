@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+<div class="content" ng-controller="SalesController">
+<form name="salesForm" ng-submit="salesForm.$valid && SaveSales()" ng-class="{'submitted':submitted}" novalidate>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Create</strong>
+                <small>Form</small>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label">Item Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" ng-model="Sales.ItemName" name="input-normal" class="form-control" placeholder="Item Name" ng-keydown="$event.keyCode === 13 && changeFocus('ItemRate')">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label">Item Rate</label>
+                    <div class="col-sm-6">
+                        <input type="number" ng-model="Sales.ItemRate" ng-change="CalculateTotalAmount()" name="ItemRate" class="form-control" placeholder="00.00" ng-keydown="$event.keyCode === 13 && changeFocus('ItemQuantity')">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label">Item Quantity</label>
+                    <div class="col-sm-6">
+                        <input type="number" ng-model="Sales.ItemQuantity" ng-change="CalculateTotalAmount()" name="ItemQuantity" class="form-control" placeholder="00.00" ng-keydown="$event.keyCode === 13 && changeFocus('Submit')">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label">Total Amount</label>
+                    <div class="col-sm-6">
+                        <input type="text" ng-model="Sales.TotalAmount" name="Total Amount" class="form-control" placeholder="00.00" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <input type="submit" name="Submit" value="Save" ng-click="SaveSales()" class="btn btn-primary pull-left">
+                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+            </div>
+        </div>
+    </div>    
+</form>
+</div>
+<script src="~/lib/angular/controller/SalesController.js"></script>
