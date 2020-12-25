@@ -64,15 +64,12 @@
     $scope.UpdateSales = function () {
         $http({
             method: "POST",
-            url: "/Ipd/Bed/UpdateSales",
+            url: "/Sales/UpdateSales",
             data: $scope.Sales
 
         }).success(function (response) {
             $scope.Sales.Id = response.Id;
-            $scope.Success = response.Success;
-            if ($scope.Bed.Id > 0 && $scope.Success == true) {
-                $scope.alerts.push({ 'type': 'success', 'msg': $scope.appMessage.update });
-            }
+            $scope.alerts.push({ 'type': 'success', 'msg': $scope.appMessage.update });
         }).error(function (response) {
             $scope.alerts.push({ 'type': 'danger', 'msg': $scope.appMessage.failure });
         });
